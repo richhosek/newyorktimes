@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NYT</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="nyt.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="nyt.css">
+</head>
+<body>
+    <div class="container">
+        <h1>New York Times Search</h1>
+        <div class="row">
+            <div class="col-5">
+                <form>
+                    <label for="search">Search For</label>
+                    <input type="text" id="search"><br><br>
+                    <label for="numberOfArticles">Number of Articles</label>
+                    <select id="numberOfArticles">
+                        <option value="1">one</option>
+                        <option value="5">five</option>
+                        <option value="10">ten</option>
+                    </select><br>
+                    <label for="startYear">Start Year (optional)</label>
+                    <input type="text" id="startYear"><br>
+                    <label for="endYear">End Year (optional)</label>
+                    <input type="text" id="endYear"><br><br>
+                    <button class="btn btn-primary">Search</button>
+                </form>
+            </div class="col-5">
+            <div class="col-7">
+                <div id="articles"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $("button").on("click", function(event){
+        console.log($("#search").val())
+        event.preventDefault();
+        console.log("CLICK")
+        getArticles(
+            $("#search").val().trim(), 
+            $("#numberOfArticles").val(), 
+            $("#startYear").val().trim(), 
+            $("#endYear").val().trim()
+        );
+    })
+    </script>
+</body>
+</html>
